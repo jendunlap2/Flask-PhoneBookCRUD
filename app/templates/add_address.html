@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Address{% endblock %}
+
+{% block content %}
+    <h1>Add Address</h1>
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <fieldset>
+                {{ form.name.label }}
+                {{ form.name(class='form-control') }}
+            </fieldset>
+            <fieldset>
+                {{ form.street.label }}
+                {{ form.street(class='form-control') }}
+            </fieldset>
+            <fieldset>
+                {{ form.city.label }}
+                {{ form.city(class='form-control') }}
+            </fieldset>
+            <fieldset>
+                {{ form.state.label }}
+                {{ form.state(class='form-control') }}
+            </fieldset>
+            <fieldset>
+                {{ form.zip_code.label }}
+                {{ form.zip_code(class='form-control') }}
+            </fieldset>
+        </div>
+        {{ form.submit(class='btn btn-secondary') }}
+    </form>
+
+{% endblock %}

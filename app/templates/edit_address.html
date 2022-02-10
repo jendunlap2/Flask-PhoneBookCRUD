@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Edit Address {{ street.name}} </h1>
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <fieldset>
+                {{ form.name.label }}
+                {{ form.name(class='form-control', value=address.name) }}
+            </fieldset>
+            <fieldset>
+                {{ form.street.label }}
+                {{ form.street(class='form-control', value=address.street) }}
+            </fieldset>
+            <fieldset>
+                {{ form.city.label }}
+                {{ form.city(class='form-control', value=address.city) }}
+            </fieldset>
+            <fieldset>
+                {{ form.state.label }}
+                {{ form.state(class='form-control', value=address.state) }}
+            </fieldset>
+            <fieldset>
+                {{ form.zip_code.label }}
+                {{ form.zip_code(class='form-control', value=address.zip_code) }}
+            </fieldset>
+        </div>
+        {{ form.submit(class='btn btn-secondary') }}
+    </form>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAddressModal">
+        Delete Address
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="deleteAddresstModal" tabindex="-1" aria-labelledby="deleteAddresstModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="deleteAddresstModalLabel">Delete {{ address.name }}?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            You are about to delete {{ address.name }}. This action cannot be undone. Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a href="{{ url_for('delete_address', prod_id=address.id) }}" class="btn btn-danger">Yes, delete address</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}

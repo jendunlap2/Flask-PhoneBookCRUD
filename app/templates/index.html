@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <h1>Welcome back, {{ current_user.username }}!</h1>
+    {% else %}
+        <h1>Welcome! Please register to use the phone book.</h1>
+    {% endif %}
+
+    {% for address in addresses %}
+
+        <div class="card">
+            <div class="card-header">
+            Name
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">Address</h5>
+            <p class="card-text">City, State, Zip</p>
+            <a href="{{ url_for('address_info', address_id=address.id)}}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+        
+
+    {% endfor %}
+
+{% endblock %}
